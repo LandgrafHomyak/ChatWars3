@@ -1,0 +1,3 @@
+20 Powder
+20 Silver ore
+10 String

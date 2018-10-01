@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CW3 Craft</title>
+    <style>
+        body > div {
+            background: rgb(24, 37, 51);
+            border-radius: 5px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        body > div.stock-body > div {
+            width: 100%;
+        }
+
+        td.stock-count {
+            color: rgb(90, 140, 183);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        td.stock-name {
+            text-align: left;
+            width: 99%;
+        }
+
+        td.ok {
+            background: #0f0;
+            height: 10px;
+        }
+
+        td.n {
+            background: #660;
+            height: 10px;
+        }
+
+    </style>
+    <script>
+        function get(url) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, false);
+            xhr.send();
+            return xhr.responseText
+        }
+
+        var stock = {};
+
+        /*{
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "res.txt", false);
+            xhr.send();
+            _stock = xhr.responseText.split("\n");
+            for (let res in _stock) {
+                stock[_stock[res]] = 0
+            }
+        }*/
+        function clearStock() {
+            stock = {};
+            elements["stock-input"].style.display = "block";
+            elements["stock-clear"].style.display = "none";
+            while (elements["stock-list"].rows.length > 0) {
+                elements["stock-list"].rows[0].remove()
+            }
+            showRecipe()
+
+        }
+
+        function loadStock() {
+            var data = elements["stock-input-text"].value;
+            data = data.slice(data.lastIndexOf(":") + 1, data.length).split(" ");
+            elements["stock-input-text"].value = "";
+            elements["stock-input"].style.display = "none";
+            elements["stock-clear"].style.display = "block";
+            if (data[0] === "") {
+                data.splice(0, 1)
+            }
+            stock = {};
+
+            var c = [];
+            for (let i in data) {
+                if (data[i][0] !== "(") {
+                    c.push(data[i])
+                } else {
+                    stock[c.join(" ")] = parseInt(data[i].slice(1, data[i].length - 1));
+                    c = []
+                }
+            }
+            for (let res in stock) {
+                elements["stock-list"].children[0].innerHTML = elements["stock-list"].children[0].innerHTML +
+                    "<tr><td class='stock-count'>" + stock[res] + "</td><td class='stock-name'>" + res + "</td></tr>"
+            }
+            showRecipe()
+        }
+
+        var recipe = "";
+
+        function showRecipe() {
+            recipe = elements['recipe-select'].value;
+            elements["recipe-list"].innerHTML = "";
+            var _parts = get("recipes/" + recipe + ".txt").split("\r\n");
+            var parts = {};
+            for (let part in _parts) {
+                parts[_parts[part].slice(_parts[part].search(" ") + 1, _parts[part].length)] = parseInt(_parts[part].slice(0, _parts[part].search(" ")))
+            }
+            for (let part in parts) {
+
+                if (stock[part] >= parts[part]) {
+                    elements["recipe-list"].innerHTML = elements["recipe-list"].innerHTML +
+                        "<h4>" + part + " (" + parts[part] + "/" + parts[part] + ")<br><table width='100%'><tr>" + Array(parts[part] + 1).join("<td class='ok'></td>") + "</tr></table></h4>"
+                } else {
+                    elements["recipe-list"].innerHTML = elements["recipe-list"].innerHTML +
+                        "<h4>" + part + " (" + ((stock[part] === undefined) ? 0 : stock[part]) + "/" + parts[part] + ")<br><table width='100%'><tr>" + (Array((stock[part] === undefined) ? 0 : stock[part] + 1).join("<td class='ok'></td>")) + (Array(parts[part] - ((stock[part] === undefined) ? -1 : stock[part] - 1)).join("<td class='n'></td>")) + "</td></tr></table></h4>"
+                }
+            }
+        }
+    </script>
+</head>
+<body style="background:rgb(14, 22, 33);color:white;display:flex;flex-direction:row;flex-wrap:wrap">
+<div id="stock-body" style="flex:150px">
+    <div id="stock-input">
+        Скопируйте <a href="http://t.me/share/url?url=/stock" target="_blank"
+                      style="color:rgb(112, 186, 245)">/stock</a> сюда:<br>
+        <input id="stock-input-text" width="100%"/>
+        <button onclick="loadStock()">✔️</button>
+    </div>
+    <div id="stock-clear" style="display: none">
+        <button style="width:100%;text-align:center" onclick="clearStock()">
+            Очистить
+        </button>
+    </div>
+    <table id="stock-list" width="100%">
+        <tbody></tbody>
+    </table>
+</div>
+<div style="flex:350px">
+    <select onclick="if (elements['recipe-select'].value !== recipe) {showRecipe()}" id="recipe-select">
+        <option value="">Выберите рецепт</option>
+        <script>
+            {
+                recipes = get("book.txt");
+                recipes = recipes.split("\n");
+                for (let code in recipes) {
+                    document.write("<option value='" + recipes[code].split(" ")[0] + "'>" + recipes[code] + "</option>")
+                }
+            }
+        </script>
+    </select>
+    <div id="recipe-list"></div>
+</div>
+<script>
+    var elements = {
+        "stock-input": document.getElementById("stock-input"),
+        "stock-clear": document.getElementById("stock-clear"),
+        "stock-input-text": document.getElementById("stock-input-text"),
+        "stock-list": document.getElementById("stock-list"),
+        "recipe-list": document.getElementById("recipe-list"),
+        'recipe-select': document.getElementById('recipe-select'),
+
+    };
+</script>
+</body>
+</html>

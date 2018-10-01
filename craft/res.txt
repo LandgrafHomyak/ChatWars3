@@ -1,0 +1,35 @@
+Thread
+Stick
+Pelt
+Bone
+Coal
+Charcoal
+Powder
+Iron ore
+Cloth
+Silver ore
+Bauxite
+Cord
+Magic stone
+Wooden shaft
+Sapphire
+Solvent
+Ruby
+Hardener
+Steel
+Leather
+Bone powder
+String
+Coke
+Purified powder
+Silver alloy
+
+Steel mold
+Silver mold
+Blacksmith frame
+Artisan frame
+Rope
+Silver frame
+Metal plate
+Metallic fiber
+Crafted leather
