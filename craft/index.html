@@ -99,7 +99,7 @@
         function showRecipe() {
             recipe = elements['recipe-select'].value;
             elements["recipe-list"].innerHTML = "";
-            var _parts = get("recipes/" + recipe + ".txt").split("\r\n");
+            var _parts = get("recipes/" + recipe + ".txt").split("\n");
             var parts = {};
             for (let part in _parts) {
                 parts[_parts[part].slice(_parts[part].search(" ") + 1, _parts[part].length)] = parseInt(_parts[part].slice(0, _parts[part].search(" ")))
