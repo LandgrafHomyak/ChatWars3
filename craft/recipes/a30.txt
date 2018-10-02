@@ -1,0 +1,5 @@
+1 Solvent
+9 Metal plate
+5 Coke
+7 Rope
+1 Silver mold

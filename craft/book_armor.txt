@@ -1,0 +1,13 @@
+a27 Order Armor
+a28 Order Helmet
+a29 Order Boots
+a30 Order Gauntlets
+a31 Order Shield
+a32 Hunter Armor
+a33 Hunter Helmet
+a34 Hunter Boots
+a35 Hunter Gloves
+a36 Clarity Robe
+a37 Clarity Circlet
+a38 Clarity Shoes
+a39 Clarity Bracers

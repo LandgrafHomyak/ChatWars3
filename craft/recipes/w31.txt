@@ -1,0 +1,6 @@
+1 Ruby
+3 Hardener
+41 Coke
+41 Metal plate
+3 Steel mold
+27 Silver alloy

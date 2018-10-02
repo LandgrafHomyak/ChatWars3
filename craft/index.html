@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <title>CW3 Craft</title>
     <style>
-        body > div {
+        div.msg {
             background: rgb(24, 37, 51);
             border-radius: 5px;
             margin: 5px;
             padding: 5px;
         }
 
-        body > div.stock-body > div {
+        div.flexbox {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap
+        }
+
+        body > div > div.stock-body > div {
             width: 100%;
         }
 
@@ -34,6 +40,10 @@
         td.n {
             background: #660;
             height: 10px;
+        }
+
+        .command {
+            color: rgb(112, 186, 245)
         }
 
     </style>
@@ -97,9 +107,9 @@
         var recipe = "";
 
         function showRecipe() {
-            recipe = elements['recipe-select'].value;
             elements["recipe-list"].innerHTML = "";
-            var _parts = get("recipes/" + recipe + ".txt").split("\n");
+            var _parts = get("recipes/" + recipe[0] + ".txt").split("\n");
+            elements["recipe-name"].innerHTML = recipe[1];
             var parts = {};
             for (let part in _parts) {
                 parts[_parts[part].slice(_parts[part].search(" ") + 1, _parts[part].length)] = parseInt(_parts[part].slice(0, _parts[part].search(" ")))
@@ -117,37 +127,115 @@
         }
     </script>
 </head>
-<body style="background:rgb(14, 22, 33);color:white;display:flex;flex-direction:row;flex-wrap:wrap">
-<div id="stock-body" style="flex:150px">
-    <div id="stock-input">
-        Скопируйте <a href="http://t.me/share/url?url=/stock" target="_blank"
-                      style="color:rgb(112, 186, 245)">/stock</a> сюда:<br>
-        <input id="stock-input-text" width="100%"/>
-        <button onclick="loadStock()">✔️</button>
+<body style="background:rgb(14, 22, 33);color:white;">
+<div class="flexbox">
+    <div class="flexbox" style="flex:525px">
+        <div class="msg" id="stock-body" style="flex:240px">
+            <div id="stock-input">
+                Скопируйте <a href="http://t.me/share/url?url=/stock" target="_blank" class="command">/stock</a>
+                сюда:<br>
+                <input id="stock-input-text" width="100%"/>
+                <button onclick="loadStock()">✔️</button>
+            </div>
+            <div id="stock-clear" style="display: none">
+                <button style="width:100%;text-align:center" onclick="clearStock()">
+                    Очистить
+                </button>
+            </div>
+            <table id="stock-list" width="100%">
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="msg" id="recipes-select" style="flex:240px">
+            <button style="width:100%"
+                    onclick="elements['recipe-select-simple'].style.display = 'table';elements['recipe-select-weapon'].style.display = 'none';elements['recipe-select-armor'].style.display = 'none';">
+                Простой крафт
+            </button>
+            <br>
+            <button style="width:100%"
+                    onclick="elements['recipe-select-simple'].style.display = 'none';elements['recipe-select-weapon'].style.display = 'table';elements['recipe-select-armor'].style.display = 'none';">
+                Оружее
+            </button>
+            <br>
+            <button style="width:100%"
+                    onclick="elements['recipe-select-simple'].style.display = 'none';elements['recipe-select-weapon'].style.display = 'none';elements['recipe-select-armor'].style.display = 'table';">
+                Броня
+            </button>
+            <br>
+
+            <table style="width:100%; max-height: 500px; overflow-y: scroll" id="recipe-select-simple">
+                <script>
+                    var recipes = get("book_simple.txt");
+                    recipes = recipes.split("\n");
+                    for (let code in recipes) {
+                        document.write("<tr onclick='recipe = [\"");
+                        document.write(recipes[code].split(" ")[0]);
+                        document.write("\", \"");
+                        document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
+                        document.write("\"];showRecipe()'>");
+                        document.write("<td>");
+                        document.write(recipes[code].split(" ")[0]);
+                        document.write("</td><td width='99%'>");
+                        document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
+                        document.write("</td></tr>");
+                    }
+                </script>
+            </table>
+            <table style="width:100%; max-height: 500px; overflow-y: scroll; display:none" id="recipe-select-weapon">
+                <script>
+                    var recipes = get("book_weapon.txt");
+                    recipes = recipes.split("\n");
+                    for (let code in recipes) {
+                        document.write("<tr onclick='recipe = [\"");
+                        document.write(recipes[code].split(" ")[0]);
+                        document.write("\", \"");
+                        document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
+                        document.write("\"];showRecipe()'>");
+                        document.write("<td>");
+                        document.write(recipes[code].split(" ")[0]);
+                        document.write("</td><td width='99%'>");
+                        document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
+                        document.write("</td></tr>");
+                    }
+                </script>
+            </table>
+            <table style="width:100%; max-height: 500px; overflow-y: scroll; display: none;" id="recipe-select-armor">
+                <script>
+                    var recipes = get("book_armor.txt");
+                    recipes = recipes.split("\n");
+                    for (let code in recipes) {
+                        document.write("<tr onclick='recipe = [\"");
+                        document.write(recipes[code].split(" ")[0]);
+                        document.write("\", \"");
+                        document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
+                        document.write("\"];showRecipe()'>");
+                        document.write("<td>");
+                        document.write(recipes[code].split(" ")[0]);
+                        document.write("</td><td width='99%'>");
+                        document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
+                        document.write("</td></tr>");
+                    }
+                </script>
+            </table>
+            <br>
+        </div>
     </div>
-    <div id="stock-clear" style="display: none">
-        <button style="width:100%;text-align:center" onclick="clearStock()">
-            Очистить
-        </button>
-    </div>
-    <table id="stock-list" width="100%">
-        <tbody></tbody>
-    </table>
-</div>
-<div style="flex:350px">
-    <select onclick="if (elements['recipe-select'].value !== recipe) {showRecipe()}" id="recipe-select">
-        <option value="">Выберите рецепт</option>
-        <script>
-            {
-                recipes = get("book.txt");
-                recipes = recipes.split("\n");
-                for (let code in recipes) {
-                    document.write("<option value='" + recipes[code].split(" ")[0] + "'>" + recipes[code] + "</option>")
+    <div class="msg" style="flex:525px">
+        <!--<select onclick="if (elements['recipe-select'].value !== recipe) {showRecipe()}" id="recipe-select">
+            <option value="">Выберите рецепт</option>
+            <script>
+                {
+                    recipes = get("book_simple.txt");
+                    recipes = recipes.split("\n");
+                    for (let code in recipes) {
+                        document.write("<option value='" + recipes[code].split(" ")[0] + "'>" + recipes[code] + "</option>")
+                    }
                 }
-            }
-        </script>
-    </select>
-    <div id="recipe-list"></div>
+            </script>
+        </select>-->
+        <h2 id="recipe-name"></h2>
+        <div id="recipe-list"></div>
+    </div>
 </div>
 <script>
     var elements = {
@@ -157,6 +245,10 @@
         "stock-list": document.getElementById("stock-list"),
         "recipe-list": document.getElementById("recipe-list"),
         'recipe-select': document.getElementById('recipe-select'),
+        'recipe-select-simple': document.getElementById('recipe-select-simple'),
+        'recipe-select-weapon': document.getElementById('recipe-select-weapon'),
+        'recipe-select-armor': document.getElementById('recipe-select-armor'),
+        'recipe-name': document.getElementById('recipe-name'),
 
     };
 </script>

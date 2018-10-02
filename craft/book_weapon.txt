@@ -1,0 +1,5 @@
+w28 Champion Sword
+w29 Trident
+w30 Hunter Bow
+w31 War Hammer
+w32 Hunter Dagger

@@ -1,0 +1,5 @@
+1 Solvent
+12 Leather
+5 Coke
+7 Rope
+1 Silver mold
