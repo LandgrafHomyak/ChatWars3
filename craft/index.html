@@ -27,7 +27,13 @@
             text-align: center;
         }
 
-        td.stock-name {
+        td.recipe-code {
+            color: rgb(150, 0, 0);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        td.stock-name, td.recipe-name {
             text-align: left;
             width: 99%;
         }
@@ -44,6 +50,15 @@
 
         .command {
             color: rgb(112, 186, 245)
+        }
+
+        tr.button {
+            cursor: pointer;
+            background: none;
+        }
+
+        tr.button:hover {
+            background: rgb(34, 47, 56);
         }
 
     </style>
@@ -168,14 +183,14 @@
                     var recipes = get("book_simple.txt");
                     recipes = recipes.split("\n");
                     for (let code in recipes) {
-                        document.write("<tr onclick='recipe = [\"");
+                        document.write("<tr class='button' onclick='recipe = [\"");
                         document.write(recipes[code].split(" ")[0]);
                         document.write("\", \"");
                         document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
                         document.write("\"];showRecipe()'>");
-                        document.write("<td>");
+                        document.write("<td class='recipe-code'>");
                         document.write(recipes[code].split(" ")[0]);
-                        document.write("</td><td width='99%'>");
+                        document.write("</td><td class='recipe-name'>");
                         document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
                         document.write("</td></tr>");
                     }
@@ -186,14 +201,14 @@
                     var recipes = get("book_weapon.txt");
                     recipes = recipes.split("\n");
                     for (let code in recipes) {
-                        document.write("<tr onclick='recipe = [\"");
+                        document.write("<tr class='button' onclick='recipe = [\"");
                         document.write(recipes[code].split(" ")[0]);
                         document.write("\", \"");
                         document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
                         document.write("\"];showRecipe()'>");
-                        document.write("<td>");
+                        document.write("<td class='recipe-code'>");
                         document.write(recipes[code].split(" ")[0]);
-                        document.write("</td><td width='99%'>");
+                        document.write("</td><td class='recipe-name'>");
                         document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
                         document.write("</td></tr>");
                     }
@@ -204,14 +219,14 @@
                     var recipes = get("book_armor.txt");
                     recipes = recipes.split("\n");
                     for (let code in recipes) {
-                        document.write("<tr onclick='recipe = [\"");
+                        document.write("<tr class='button' onclick='recipe = [\"");
                         document.write(recipes[code].split(" ")[0]);
                         document.write("\", \"");
                         document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
                         document.write("\"];showRecipe()'>");
-                        document.write("<td>");
+                        document.write("<td class='recipe-code'>");
                         document.write(recipes[code].split(" ")[0]);
-                        document.write("</td><td width='99%'>");
+                        document.write("</td><td class='recipe-name'>");
                         document.write(recipes[code].split(" ").slice(1, recipes[code].split(" ").length).join(" "));
                         document.write("</td></tr>");
                     }
