@@ -1,0 +1,6 @@
+3 Blacksmith frame
+15 Coke
+15 Metal plate
+27 Silver alloy
+7 Solvent
+5 Sapphire

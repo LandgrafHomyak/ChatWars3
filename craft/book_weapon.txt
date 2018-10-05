@@ -3,3 +3,15 @@ w29 Trident
 w30 Hunter Bow
 w31 War Hammer
 w32 Hunter Dagger
+w33 Thundersoul Sword
+w34 Doomblade Sword
+w36 Guard's Spear
+w37 King's Defender
+w39 Composite Bow
+w40 Lightning Bow
+w41 Hailstorm Bow
+w42 Imperial Axe
+w43 Skull Crusher
+w44 Dragon Mace
+w45 Ghost Dagger
+w46 Lion Knife

@@ -1,0 +1,6 @@
+5 Blacksmith frame
+17 Rope
+13 Coke
+18 Crafted leather
+15 Solvent
+9 Sapphire

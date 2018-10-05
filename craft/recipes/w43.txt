@@ -1,0 +1,6 @@
+5 Artisan frame
+11 Silver frame
+61 Coke
+72 Metal plate
+9 Hardener
+3 Ruby

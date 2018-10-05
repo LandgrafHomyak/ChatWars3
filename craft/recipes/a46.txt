@@ -1,0 +1,6 @@
+3 Blacksmith frame
+12 Rope
+9 Coke
+27 Metallic fiber
+7 Solvent
+5 Sapphire
