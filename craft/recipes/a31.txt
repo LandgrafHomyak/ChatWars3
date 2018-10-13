@@ -1,4 +1,4 @@
-1 Steel mold
+1 Silver mold
 7 Metal plate
 7 Coke
 15 Silver alloy
