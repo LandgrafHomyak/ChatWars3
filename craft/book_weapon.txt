@@ -15,3 +15,12 @@ w43 Skull Crusher
 w44 Dragon Mace
 w45 Ghost Dagger
 w46 Lion Knife
+w91 Griffin Knife
+w92 Minotaur Sword
+w93 Phoenix Sword
+w94 Heavy Fauchard
+w95 Guisarme
+w96 Meteor Bow
+w97 Nightfall Bow
+w98 Black Morningstar
+w99 Maiming Bulawa

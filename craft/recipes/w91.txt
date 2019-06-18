@@ -1,0 +1,9 @@
+27 Coke
+21 Silver alloy
+2 Quality Cloth
+1 Ruby
+1 Magic stone
+1 Artisan mold
+1 Blacksmith mold
+11 Metal plate
+3 Hardener

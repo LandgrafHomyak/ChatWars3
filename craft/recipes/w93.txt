@@ -1,0 +1,8 @@
+3 Ruby
+79 Metal plate
+3 Artisan mold
+119 Coke
+3 Quality Cloth
+17 Steel mold
+10 Silver frame
+9 Hardener
