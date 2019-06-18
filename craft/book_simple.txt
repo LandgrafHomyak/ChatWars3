@@ -10,10 +10,22 @@ tch Torch
 25 Silver alloy
 27 Steel mold
 28 Silver mold
+29 Blacksmith frame
+30 Artisan frame
 31 Rope
+32 Silver frame
 33 Metal plate
+34 Metallic fiber
+35 Crafted leather
+36 Quality cloth
+37 Blacksmith mold
+38 Artisan mold
 100 Pouch of gold
 501 Wrapping
 502 Leash
 505 Wooden arrows pack
 511 Steel arrows pack
+513 Silver arrows pack
+515 Broad arrows pack
+517 Heavy arrows pack
+519 Compound arrows pack

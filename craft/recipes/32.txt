@@ -1,0 +1,3 @@
+5 Powder
+5 Silver ore
+3 Purified powder
